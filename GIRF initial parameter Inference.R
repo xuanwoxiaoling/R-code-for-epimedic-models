@@ -1,5 +1,4 @@
 # read in the data
-setwd("/Users/qianwang/Desktop/Project/论文进度作业/R code for reference 2")
 D = as.matrix((read.csv("DistMatrix.csv")))[18:20,18:20]
 N = as.matrix.data.frame(read.csv("20pop.csv"))[,c(1,19:21)]
 B = as.matrix.data.frame(read.csv("20births.csv"))[,c(1,19:21)]
