@@ -242,13 +242,7 @@ for (mm in 1:MM) {
         #Proposed X(S,E,I,N.ir,P) using proposed parameters
         X[m,sss+1,j,] = sir.step(t,R0,a,alpha,mu,v.ei,v.ir,sigma2,rho,phi,G,X)
         u.new[j] = u(m,sss+1,j)
-        error.time = 0
-        while (u.new[j]==0) {
-          X[m,sss+1,j,] = sir.step(t,R0,a,alpha,mu,v.ei,v.ir,sigma2,rho,phi,G,X)
-          u.new[j] = u(m,sss+1,j)
-          error.time = error.time + 1
-        }
-        w.o[m,sss,j] = ifelse(m==1,u.new[j]/u.old[j],u.new[j]/(u.old[j]/div[j]))}
+        w.o[m,sss,j] = ifelse(u.new[j]==0,0,ifelse(m==1,u.new[j]/u.old[j],u.new[j]/(u.old[j]/div[j])))}
       #calculate true weight
       for (j in 1:J) {
         w[m,sss,j] = ifelse(w.o[m,sss,j]==0,0,w.o[m,sss,j]/sum(w.o[m,sss,]))
